@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="D:\Downloads\profile_service (2)\profile_service"/>
+			<item value="D:\Desktop\new backned aswinii\OnlineShoppingCart-Authentication-Authorization"/>
+			<item value="D:\Desktop\new backned aswinii\Order_Service"/>
+			<item value="D:\Desktop\new backned aswinii\Product_Service"/>
+			<item value="D:\Desktop\new backned aswinii\Profile_Service"/>
+			<item value="D:\Desktop\new backned aswinii\Cart_Service"/>
+			<item value="D:\Desktop\new backned aswinii\APICloudGateway"/>
+			<item value="D:\Desktop\new backned aswinii\Eureka_Server"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+</section>

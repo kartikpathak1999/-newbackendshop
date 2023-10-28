@@ -1,0 +1,74 @@
+package com.kartikeya.cart.controller;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.aswini.cart.entity.Cart;
+import com.aswini.cart.exception.CartNotFoundException;
+import com.aswini.cart.exception.NoProperDataException;
+import com.aswini.cart.repository.CartRepository;
+import com.aswini.cart.service.CartServiceImpl;
+
+
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class CartControllerTest{
+	
+	@Autowired
+	private CartServiceImpl service;
+	@MockBean
+	private CartRepository repo;
+	
+	@Test
+	public void getCartsTest() {
+		when(repo.findAll()).thenReturn(Stream
+				.of(new Cart(1,"Grocery","6","89.90")
+						, new Cart(2,"apples","8","100"))
+				.collect(Collectors.toList()));
+		assertEquals(2,service.getAllCustomers().size());
+	}
+	
+	@Test
+	public void getCartsById() throws CartNotFoundException {
+		int id = 1;
+		Optional<Cart> p = Optional.of(new Cart(1,"Grocery","6","89.90"));
+		when(repo.findById(id)).thenReturn(p);
+		
+		assertEquals(p,Optional.of(service.getCartById(id)));
+						
+	}
+	
+	@Test
+	public void saveCartTest() throws NoProperDataException {
+		Cart p = new Cart(1,"Grocery","6","89.90");
+		when(repo.save(p)).thenReturn(p);
+		assertEquals(p,service.addCart(p));
+	}
+	
+	@Test
+	public void deleteUserTest() throws CartNotFoundException {
+		int id = 1;
+		Cart p = new Cart(1,"Grocery","6","89.90");
+		service.deleteCart(id);
+		verify(repo,times(1)).delete(p);
+		
+	}
+}
+
+	
+	
+	
